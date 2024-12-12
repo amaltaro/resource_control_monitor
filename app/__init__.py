@@ -17,21 +17,21 @@ def create_app(config_path='config/settings.ini'):
     config_file = os.path.join(base_dir, 'app', config_path)
     
     if not os.path.exists(config_file):
-        raise FileNotFoundError(f"Configuration file not found at: {config_file}")
+        raise FileNotFoundError(f"Configuration file not found at: {config_file!r}")
     
     try:
         config.read(config_file)
         if not config.sections():
-            raise ValueError(f"No configuration sections found in {config_file}")
+            raise ValueError(f"No configuration sections found in {config_file!r}")
             
         if 'logging' not in config:
-            raise KeyError(f"Required 'logging' section missing from {config_file}")
+            raise KeyError(f"Required 'logging' section missing from {config_file!r}")
             
         # Initialize compression
         Compress(app)
         
         # Initialize metrics
-        metrics = PrometheusMetrics(app)
+        PrometheusMetrics(app)
         
         # Setup logging
         setup_logging(config['logging'])
@@ -67,9 +67,9 @@ def create_app(config_path='config/settings.ini'):
         return app
         
     except Exception as e:
-        print(f"Error initializing application: {str(e)}")
-        print(f"Current working directory: {os.getcwd()}")
-        print(f"Attempted config path: {config_file}")
+        print(f"Error initializing application: {str(e)!r}")
+        print(f"Current working directory: {os.getcwd()!r}")
+        print(f"Attempted config path: {config_file!r}")
         raise
 
 def setup_logging(config):
