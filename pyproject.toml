@@ -36,7 +36,7 @@ strict = true
 [tool.ruff]
 # Same as Black.
 line-length = 88
-target-version = ["py311", "py312"]
+target-version = ["3.11", "3.12"]
 
 # Enable all rules by default, then configure specific rules below
 select = ["E", "F", "B", "I", "N", "UP", "PL", "RUF"]
