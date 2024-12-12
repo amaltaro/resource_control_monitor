@@ -8,7 +8,7 @@ status_bp = Blueprint('status', __name__)
 def get_status():
     uptime = (datetime.utcnow() - current_app.start_time).total_seconds()
     last_cycle = current_app.last_cycle.isoformat() if current_app.last_cycle else None
-    
+
     return jsonify({
         'version': '1.0.0',
         'status': 'healthy',
