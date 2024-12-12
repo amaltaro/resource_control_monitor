@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "app"}]
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = ">=3.11,<3.13"
 flask = "^3.0.0"
 flask-compress = "^1.14"
 prometheus-flask-exporter = "^0.22.3"
@@ -36,7 +36,7 @@ strict = true
 [tool.ruff]
 # Same as Black.
 line-length = 88
-target-version = "py312"
+target-version = ["py311", "py312"]
 
 # Enable all rules by default, then configure specific rules below
 select = ["E", "F", "B", "I", "N", "UP", "PL", "RUF"]

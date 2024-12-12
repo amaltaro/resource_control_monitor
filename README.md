@@ -179,6 +179,25 @@ poetry run mypy .
 poetry run pytest
 ```
 
+### Continuous Integration
+
+The project uses GitHub Actions for automated checks:
+
+- **Static Analysis**: Runs on every commit and pull request
+  - Ruff linting and formatting checks
+  - Ruff static code analysis
+  - Runs against Python 3.11 and 3.12
+  - Cached dependencies for faster execution
+
+To run the same checks locally:
+```bash
+# Run all checks
+poetry run ruff check .
+
+# Auto-fix issues
+poetry run ruff check --fix .
+```
+
 ### Dependency Management
 
 - Add a new dependency:
