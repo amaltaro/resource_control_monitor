@@ -157,9 +157,16 @@ The project includes several development tools configured in pyproject.toml:
 poetry run black .
 ```
 
-- **Flake8** (Linting):
+- **Ruff** (Fast linting, import sorting, and more):
 ```bash
-poetry run flake8
+# Check your code
+poetry run ruff check .
+
+# Fix auto-fixable issues
+poetry run ruff check --fix .
+
+# Format imports
+poetry run ruff format .
 ```
 
 - **MyPy** (Type checking):
