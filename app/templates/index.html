@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WM Resource Monitor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .endpoints {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        code {
+            background-color: #e9e9e9;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Workload Management Resource Control Monitor</h1>
+        
+        <p>This service provides real-time monitoring and metrics for workload management resources. 
+           It offers RESTful APIs to track system status, resource utilization, and performance metrics.</p>
+        
+        <div class="endpoints">
+            <h2>Available Endpoints:</h2>
+            <ul>
+                <li><code>/wm_resource_monitor/api/status</code> - System status, version, and health information</li>
+                <li><code>/wm_resource_monitor/api/metrics</code> - Prometheus-compatible metrics endpoint</li>
+            </ul>
+        </div>
+
+        <h2>Features:</h2>
+        <ul>
+            <li>Real-time resource monitoring</li>
+            <li>Prometheus metrics integration</li>
+            <li>RESTful API architecture</li>
+            <li>Secure X.509 certificate-based authentication</li>
+            <li>Compressed data transfer</li>
+        </ul>
+
+        <p>For API documentation and integration details, please refer to 
+           <code>/wm_resource_monitor/api</code></p>
+    </div>
+</body>
+</html> 
