@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "app"}]
 
 [tool.poetry.dependencies]
-python = ">=3.11,<3.13"
+python = ">=3.11"
 flask = "^3.0.0"
 flask-compress = "^1.14"
 prometheus-flask-exporter = "^0.22.3"
@@ -27,16 +27,16 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.black]
 line-length = 88
-target-version = ['py312']
+target-version = ['py311']
 
 [tool.mypy]
-python_version = "3.12"
+python_version = "3.11"
 strict = true
 
 [tool.ruff]
 # Same as Black.
 line-length = 88
-target-version = ["3.11", "3.12"]
+target-version = "py311"
 
 # Enable all rules by default, then configure specific rules below
 select = ["E", "F", "B", "I", "N", "UP", "PL", "RUF"]

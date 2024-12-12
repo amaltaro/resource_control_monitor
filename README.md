@@ -41,7 +41,7 @@ The WM Resource Control Monitor provides:
 ## Architecture
 
 ### Components
-- Flask web framework (Python 3.12)
+- Flask web framework (Python 3.11+)
 - SQLite3 database backend
 - Gunicorn WSGI HTTP Server
 - Prometheus metrics integration
@@ -71,7 +71,7 @@ project_root/
 ```
 
 ### Prerequisites
-- Python 3.12 or higher
+- Python 3.11 or higher
 - Poetry (dependency management)
 
 ### Development Environment
@@ -184,7 +184,6 @@ poetry run pytest
 The project uses GitHub Actions for automated checks:
 
 - **Static Analysis**: Runs on every commit and pull request
-  - Ruff linting and formatting checks
   - Ruff static code analysis
   - Runs against Python 3.11 and 3.12
   - Cached dependencies for faster execution
@@ -193,9 +192,11 @@ To run the same checks locally:
 ```bash
 # Run all checks
 poetry run ruff check .
+# poetry run ruff format --check .
 
 # Auto-fix issues
 poetry run ruff check --fix .
+# poetry run ruff format .
 ```
 
 ### Dependency Management
