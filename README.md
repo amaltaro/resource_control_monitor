@@ -54,7 +54,7 @@ project_root/
 │   └── workflows/
 │       ├── static-analysis.yml
 │       └── release-notes.yml
-├── wm_resource_control/
+├── src/
 │   ├── __init__.py
 │   ├── api/
 │   │   ├── __init__.py
@@ -63,8 +63,6 @@ project_root/
 │   ├── auth/
 │   │   ├── __init__.py
 │   │   └── x509.py
-│   ├── templates/
-│   │   └── index.html
 │   └── config/
 │       └── settings.ini
 ├── tests/
@@ -72,13 +70,13 @@ project_root/
 │   ├── conftest.py
 │   ├── api_t/
 │   │   ├── __init__.py
-│   │   └── endpoints_t.py
+│   │   ├── status_t.py
+│   │   └── metrics_t.py
 │   ├── auth_t/
 │   │   ├── __init__.py
 │   │   └── x509_t.py
-│   └── integration_t/
-│       ├── __init__.py
-│       └── endpoints_t.py
+│   └── config_t/
+│       └── settings_t.py
 ├── logs/
 ├── pyproject.toml
 ├── poetry.lock
@@ -114,7 +112,7 @@ poetry run python wsgi.py
 poetry install --only main
 ```
 
-2. Configure settings in `wm_resource_control/config/settings.ini`
+2. Configure settings in `src/config/settings.ini`
 
 3. Run with Gunicorn:
 ```bash
@@ -206,7 +204,7 @@ poetry run pytest
 poetry run pytest --cov
 
 # Run specific test file
-poetry run pytest tests/unit/api_t.py
+poetry run pytest tests/api_t/status_t.py
 ```
 
 Test files are organized as:
