@@ -56,6 +56,7 @@ project_root/
 ├── .github/
 │   └── workflows/
 │       ├── static-analysis.yml
+│       ├── tests.yml
 │       └── release-notes.yml
 ├── src/
 │   ├── __init__.py
@@ -73,13 +74,10 @@ project_root/
 │   ├── conftest.py
 │   ├── api_t/
 │   │   ├── __init__.py
-│   │   ├── status_t.py
-│   │   └── metrics_t.py
-│   ├── auth_t/
-│   │   ├── __init__.py
-│   │   └── x509_t.py
-│   └── config_t/
-│       └── settings_t.py
+│   │   └── status_t.py
+│   └── auth_t/
+│       ├── __init__.py
+│       └── x509_t.py
 ├── logs/
 ├── pyproject.toml
 ├── poetry.lock
