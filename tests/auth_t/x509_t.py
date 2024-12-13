@@ -2,6 +2,7 @@ import pytest
 from src.auth.x509 import require_cert_role
 from unittest.mock import Mock, patch
 from flask import Flask
+from http import HTTPStatus
 
 @pytest.fixture
 def mock_app():
@@ -10,13 +11,13 @@ def mock_app():
 
 def test_require_cert_role_no_cert(mock_app):
     """Test authentication fails when no certificate is provided."""
-    with mock_app.test_request_context() as ctx:
+    with mock_app.test_request_context():
         mock_view = Mock()
         protected_view = require_cert_role(['admin'])(mock_view)
         
         with pytest.raises(Exception) as exc_info:
             protected_view()
-        assert exc_info.value.code == 401
+        assert exc_info.value.code == HTTPStatus.UNAUTHORIZED
 
 def test_require_cert_role_invalid_role(mock_app):
     """Test authentication fails with invalid role."""
@@ -56,7 +57,7 @@ GE/Emo/zIpCztDHu+obEUtkoZZByHR6jOUvr69TFmjIeseDNRVHgV1R1eurBnlSD
             with pytest.raises(Exception) as exc_info:
                 protected_view()
             print(f"Exception raised: {exc_info.value}")
-            assert exc_info.value.code == 403
+            assert exc_info.value.code == HTTPStatus.FORBIDDEN
 
 def test_require_cert_role_valid(mock_app):
     """Test authentication succeeds with valid certificate and role."""
