@@ -52,7 +52,8 @@ The WM Resource Control Monitor provides:
 project_root/
 ├── .github/
 │   └── workflows/
-│       └── static-analysis.yml
+│       ├── static-analysis.yml
+│       └── release-notes.yml
 ├── wm_resource_control/
 │   ├── __init__.py
 │   ├── api/
@@ -226,7 +227,12 @@ poetry export -f requirements.txt --output requirements.txt
 
 ## Version Management
 
-This project uses Poetry for version management following Semantic Versioning (SemVer).
+This project uses Poetry for version management following Semantic Versioning (SemVer) and PEP 440.
+
+### Versioning Conventions
+- Python/Poetry versions follow PEP 440 (e.g., `0.1.0`)
+- Git tags use 'v' prefix (e.g., `v0.1.0`)
+- Version in `pyproject.toml` is the source of truth
 
 ### Version Format
 - MAJOR.MINOR.PATCH (e.g., 0.1.0)
@@ -253,3 +259,54 @@ poetry version 1.2.3
 ```
 
 The version is maintained in `pyproject.toml` and serves as the single source of truth for the project version.
+
+### Release Process
+
+Commit messages should follow the conventional commits format:
+- `feat: new feature`
+- `fix: bug fix`
+- `chore: maintenance task`
+- `docs: documentation update`
+- `deps: dependency update`
+
+1. Update version:
+```bash
+poetry version patch  # or minor/major
+```
+
+2. Commit the version change:
+```bash
+git add pyproject.toml
+git commit -m "chore: bump version to v$(poetry version -s)"
+```
+
+3. Create and push a tag:
+```bash
+git tag v$(poetry version -s)  # Git tag includes 'v' prefix
+git push origin v$(poetry version -s)
+```
+
+Note: Poetry version commands use numbers without 'v' prefix (e.g., `0.1.0`),
+while Git tags and release names include the 'v' prefix (e.g., `v0.1.0`).
+
+The GitHub Action will automatically:
+- Generate release notes from commit messages
+- Create a GitHub release
+- Categorize changes based on conventional commit types
+- Include commit hashes and authors
+
+Release notes will be categorized as follows:
+- 🚀 Features (commits starting with 'feat:')
+- 🐛 Bug Fixes (commits starting with 'fix:')
+- 🧰 Maintenance (commits starting with 'chore:')
+- 📚 Documentation (commits starting with 'docs:')
+- ⬆️ Dependencies (commits starting with 'deps:')
+
+Example commit messages:
+```bash
+git commit -m "feat: add new monitoring endpoint"
+git commit -m "fix: correct status response format"
+git commit -m "docs: update API documentation"
+git commit -m "chore: update development dependencies"
+git commit -m "deps: upgrade flask to 3.0.0"
+```
