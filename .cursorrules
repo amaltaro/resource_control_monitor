@@ -79,7 +79,7 @@
   - Use Flask's test client for integration testing.
   - Implement test fixtures for database and application setup.
   - Mirror the package structure.
-  - Each package source file should have a corresponding test file.
+  - Each package source file should have a corresponding test file, except for the root package.
   - Add a `_t` suffix to test directories.
   - Add a `_t.py` suffix to test python files.
 
