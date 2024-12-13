@@ -1,5 +1,5 @@
 import pytest
-from wm_resource_control.auth.x509 import require_cert_role
+from src.auth.x509 import require_cert_role
 from unittest.mock import Mock, patch
 from flask import Flask
 
@@ -52,7 +52,7 @@ GE/Emo/zIpCztDHu+obEUtkoZZByHR6jOUvr69TFmjIeseDNRVHgV1R1eurBnlSD
             return 'user'
 
         with patch('ssl.PEM_cert_to_DER_cert', side_effect=mock_pem_to_der), \
-             patch('wm_resource_control.auth.x509.extract_role_from_cert', side_effect=mock_extract_role):
+             patch('src.auth.x509.extract_role_from_cert', side_effect=mock_extract_role):
             with pytest.raises(Exception) as exc_info:
                 protected_view()
             print(f"Exception raised: {exc_info.value}")
@@ -83,6 +83,6 @@ def test_require_cert_role_valid(mock_app):
         protected_view = require_cert_role(['admin'])(mock_view)
 
         # Mock the extract_role_from_cert function to return admin role
-        with patch('wm_resource_control.auth.x509.extract_role_from_cert', return_value='admin'):
+        with patch('src.auth.x509.extract_role_from_cert', return_value='admin'):
             result = protected_view()
             assert result == 'success'

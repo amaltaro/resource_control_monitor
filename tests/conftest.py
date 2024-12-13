@@ -1,5 +1,5 @@
 import pytest
-from wm_resource_control import create_app
+from src import create_app
 import os
 import tempfile
 
