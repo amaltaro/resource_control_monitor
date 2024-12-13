@@ -4,13 +4,13 @@ Handles reverse proxy configuration
 Supports both development and production environments
 Maintains separation between application logic and server configuration
 """
-from wm_resource_control import create_app
+from src import create_app
 from werkzeug.middleware.proxy_fix import ProxyFix
 import os
 
 # Get the directory containing wsgi.py
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-config_path = os.path.join(BASE_DIR, 'wm_resource_control', 'config', 'settings.ini')
+config_path = os.path.join(BASE_DIR, 'src', 'config', 'settings.ini')
 # Create Flask application instance using the factory pattern
 app = create_app(config_path)
 
