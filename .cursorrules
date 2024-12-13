@@ -78,6 +78,9 @@
   - Write unit tests using pytest.
   - Use Flask's test client for integration testing.
   - Implement test fixtures for database and application setup.
+  - Mirror the package structure.
+  - Add a `_t` suffix to test directories.
+  - Add a `_t.py` suffix to test python files.
 
   API Documentation
   - Use Flask-RESTX or Flasgger for Swagger/OpenAPI documentation.
