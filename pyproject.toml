@@ -9,7 +9,7 @@ authors = [
 
 [tool.poetry]
 name = "wm-resource-control"
-version = "0.2.0"
+version = "0.2.1"
 description = "Resource Control API for Workflow Manager"
 authors = ["Your Name <your.email@example.com>"]
 readme = "README.md"
