@@ -3,7 +3,7 @@ from flask_compress import Compress
 from prometheus_flask_exporter import PrometheusMetrics
 import configparser
 import logging.config
-from datetime import datetime
+from datetime import datetime, UTC
 import os
 
 def create_app(config_path='config/settings.ini'):
@@ -37,7 +37,7 @@ def create_app(config_path='config/settings.ini'):
         setup_logging(config['logging'])
         
         # Track application state
-        app.start_time = datetime.utcnow()
+        app.start_time = datetime.now(UTC)
         app.last_cycle = None
         app.last_cycle_duration = None
         

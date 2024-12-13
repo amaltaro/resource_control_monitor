@@ -13,21 +13,28 @@ def require_cert_role(allowed_roles):
             if not cert:
                 logger.warning("No client certificate provided")
                 abort(401)
-            
+
+            # Strip any leading/trailing whitespace from the certificate
+            cert = cert.strip()
+
             try:
-                x509 = ssl.PEM_cert_to_DER_cert(cert)
-                # Extract role from certificate subject
-                # Implementation depends on your certificate structure
-                role = extract_role_from_cert(x509)
-                
+                cert_der = ssl.PEM_cert_to_DER_cert(cert)
+            except Exception as e:
+                logger.error(f"Failed to convert PEM to DER: {str(e)}")
+                abort(401)
+
+            try:
+                role = extract_role_from_cert(cert_der)
+
                 if role not in allowed_roles:
-                    logger.warning(f"Invalid role: {role}")
+                    logger.warning(f"Role '{role}' not in allowed roles: {allowed_roles}")
                     abort(403)
-                    
+
                 return f(*args, **kwargs)
             except Exception as e:
-                logger.error(f"Certificate validation error: {str(e)}")
-                abort(401)
+                logger.error(f"Role validation error: {str(e)}")
+                abort(403)
+
         return decorated_function
     return decorator
 
