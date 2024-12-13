@@ -50,7 +50,10 @@ The WM Resource Control Monitor provides:
 ### Directory Structure
 ```
 project_root/
-├── app/
+├── .github/
+│   └── workflows/
+│       └── static-analysis.yml
+├── wm_resource_control/
 │   ├── __init__.py
 │   ├── api/
 │   │   ├── __init__.py
@@ -98,7 +101,7 @@ poetry run python wsgi.py
 poetry install --only main
 ```
 
-2. Configure settings in `app/config/settings.ini`
+2. Configure settings in `wm_resource_control/config/settings.ini`
 
 3. Run with Gunicorn:
 ```bash
@@ -220,3 +223,33 @@ poetry update
 ```bash
 poetry export -f requirements.txt --output requirements.txt
 ```
+
+## Version Management
+
+This project uses Poetry for version management following Semantic Versioning (SemVer).
+
+### Version Format
+- MAJOR.MINOR.PATCH (e.g., 0.1.0)
+- MAJOR: Breaking changes
+- MINOR: New features (backwards compatible)
+- PATCH: Bug fixes (backwards compatible)
+
+### Usage
+```bash
+# Show current version
+poetry version
+
+# Bump patch version (0.1.0 -> 0.1.1)
+poetry version patch
+
+# Bump minor version (0.1.0 -> 0.2.0)
+poetry version minor
+
+# Bump major version (0.1.0 -> 1.0.0)
+poetry version major
+
+# Set specific version
+poetry version 1.2.3
+```
+
+The version is maintained in `pyproject.toml` and serves as the single source of truth for the project version.
