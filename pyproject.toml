@@ -8,7 +8,7 @@ authors = [
 ]
 
 [tool.poetry]
-name = "wm-resource-control"
+name = "wm_resource_control"
 version = "0.2.1"
 description = "Resource Control API for Workflow Manager"
 authors = ["Your Name <your.email@example.com>"]
@@ -26,6 +26,7 @@ werkzeug = "^3.0.1"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.0"
+pytest-cov = "^4.1.0"
 black = "^23.11.0"
 ruff = "^0.3.0"
 mypy = "^1.7.1"
@@ -73,3 +74,8 @@ dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 mccabe = { max-complexity = 10 }
 
 per-file-ignores = { "__init__.py" = ["F401"] }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["*_t.py"]
+addopts = "-v --cov=wm_resource_control --cov-report=term-missing"
