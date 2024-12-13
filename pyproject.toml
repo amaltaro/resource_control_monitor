@@ -1,5 +1,5 @@
 [project]
-name = "wm-resource-control"
+name = "wm_resource_control"
 version = "0.1.0"
 description = "Workload Management Resource Control Manager"
 requires-python = ">=3.11"
@@ -13,7 +13,7 @@ version = "0.2.1"
 description = "Resource Control API for Workflow Manager"
 authors = ["Your Name <your.email@example.com>"]
 readme = "README.md"
-packages = [{include = "wm_resource_control"}]
+packages = [{include = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
@@ -78,4 +78,4 @@ per-file-ignores = { "__init__.py" = ["F401"] }
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = ["*_t.py"]
-addopts = "-v --cov=wm_resource_control --cov-report=term-missing"
+addopts = "-v --cov=src --cov-report=term-missing"
