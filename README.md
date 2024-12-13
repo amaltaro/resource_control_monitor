@@ -1,5 +1,8 @@
 # Workload Management Resource Control Monitor
 
+[![Tests](https://github.com/amaltaro/resource_control_monitor/actions/workflows/tests.yml/badge.svg)](https://github.com/amaltaro/resource_control_monitor/actions/workflows/tests.yml)
+[![Static Analysis](https://github.com/amaltaro/resource_control_monitor/actions/workflows/static-analysis.yml/badge.svg)](https://github.com/amaltaro/resource_control_monitor/actions/workflows/static-analysis.yml)
+
 A Flask-based monitoring service that provides real-time metrics and status information for workload management resources. The service is designed to be horizontally scalable, memory-efficient, and production-ready.
 
 ## Functionality
