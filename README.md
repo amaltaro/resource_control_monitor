@@ -67,6 +67,18 @@ project_root/
 │   │   └── index.html
 │   └── config/
 │       └── settings.ini
+├── tests/
+│   ├── __init__.py
+│   ├── conftest.py
+│   ├── api_t/
+│   │   ├── __init__.py
+│   │   └── endpoints_t.py
+│   ├── auth_t/
+│   │   ├── __init__.py
+│   │   └── x509_t.py
+│   └── integration_t/
+│       ├── __init__.py
+│       └── endpoints_t.py
 ├── logs/
 ├── pyproject.toml
 ├── poetry.lock
@@ -182,6 +194,28 @@ poetry run mypy .
 ```bash
 poetry run pytest
 ```
+
+- **Testing**
+
+Run the test suite:
+```bash
+# Run all tests
+poetry run pytest
+
+# Run with coverage report
+poetry run pytest --cov
+
+# Run specific test file
+poetry run pytest tests/unit/api_t.py
+```
+
+Test files are organized as:
+- `tests/api_t/`: Tests for API endpoints
+- `tests/auth_t/`: Tests for authentication
+- `tests/integration_t/`: Integration tests
+- `conftest.py`: Test fixtures and configuration
+
+Both directories and files use the suffix `_t` (e.g., `api_t/endpoints_t.py`)
 
 ### Continuous Integration
 
