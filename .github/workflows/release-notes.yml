@@ -23,9 +23,9 @@ jobs:
         CURRENT_TAG=${GITHUB_REF#refs/tags/}
         PREV_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
         if [ -z "$PREV_TAG" ]; then
-          git log --pretty=format:"- %s (%h) @%an" > CHANGELOG.md
+          git log --pretty=format:"- %s (%h) - %an" > CHANGELOG.md
         else
-          git log --pretty=format:"- %s (%h) @%an" $PREV_TAG..$CURRENT_TAG > CHANGELOG.md
+          git log --pretty=format:"- %s (%h) - %an" $PREV_TAG..$CURRENT_TAG > CHANGELOG.md
         fi
         echo "::set-output name=changelog::$(cat CHANGELOG.md)"
 
